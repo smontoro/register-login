@@ -20,6 +20,34 @@ var user = [
 ]
 
 
+function login() {
+	var main = document.getElementById("main")
+	var h1Login = document.createElement("h1")
+	var h1LoginText = document.createTextNode("Log in for a fun surprise!")
+	var formLogin = document.createElement("form")
+	var inputUserLogin = document.createElement("input")
+		inputUserLogin.setAttribute("id", "username")
+	var inputPassLogin = document.createElement("input")
+		inputPassLogin.setAttribute("id", "password")
+	var buttonLogin = document.createElement("button")
+	var buttonLoginText = document.createTextNode("Log In")
+			buttonLogin.className = "btn button-orange mb-2 ml-3"
+			buttonLogin.setAttribute("type", "button")
+			buttonLogin.setAttribute("onclick", "checkInput()")
+
+	h1Login.appendChild(h1LoginText)
+	main.appendChild(h1Login)
+	main.appendChild(formLogin)
+	formLogin.appendChild(inputUserLogin)
+	formLogin.appendChild(inputPassLogin)
+	buttonLogin.appendChild(buttonLoginText)
+	formLogin.appendChild(buttonLogin)
+	
+	return
+}
+
+
+
 function checkInput() {
 		var username = document.getElementById("username").value
 		var password = document.getElementById("password").value
@@ -63,7 +91,9 @@ function checkInput() {
 	}
 };
 
+
 function register() {
+
 	var usernameReg = document.getElementById("regUserInput").value
 	var passwordReg = document.getElementById("regPassInput").value
 	var newUser = {
@@ -82,8 +112,12 @@ function register() {
 		
 	}
 
+
+
 	user.push(newUser)
 	alert("You are now registered. Please log in.")
+	document.getElementById('main').innerHTML = '';
+	login()
 
 };
 
