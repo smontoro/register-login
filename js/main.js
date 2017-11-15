@@ -73,21 +73,18 @@ function register() {
 
 	for(i=0; i<user.length; i++) {
 		if (usernameReg == user[i].username) {
-			console.log("alreayd used")
+			alert("This username is already taken. Please choose another one.")
 			return
 		} else if (passwordReg.length<8) {
-			console.log("too short")
+			alert("Please choose a password that is at least 8 characters long.")
 			return
 		}
 		
 	}
 
 	user.push(newUser)
-	console.log(user)
+	alert("You are now registered. Please log in.")
 
-  	
-
-	
 };
 
 
