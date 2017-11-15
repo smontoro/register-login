@@ -27,26 +27,28 @@ function login() {
 	var formLogin = document.createElement("form")
 	var inputUserLogin = document.createElement("input")
 		inputUserLogin.setAttribute("id", "username")
+		inputUserLogin.setAttribute("placeholder", "username")
 	var inputPassLogin = document.createElement("input")
 		inputPassLogin.setAttribute("id", "password")
+		inputPassLogin.setAttribute("placeholder", "password")
+	var buttonDivLog = document.createElement("div")
 	var buttonLogin = document.createElement("button")
 	var buttonLoginText = document.createTextNode("Log In")
-			buttonLogin.className = "btn button-orange mb-2 ml-3"
-			buttonLogin.setAttribute("type", "button")
-			buttonLogin.setAttribute("onclick", "checkInput()")
+		buttonLogin.className = "btn button-orange"
+		buttonLogin.setAttribute("type", "button")
+		buttonLogin.setAttribute("onclick", "checkInput()")
 
 	h1Login.appendChild(h1LoginText)
 	main.appendChild(h1Login)
 	main.appendChild(formLogin)
 	formLogin.appendChild(inputUserLogin)
 	formLogin.appendChild(inputPassLogin)
+	formLogin.appendChild(buttonDivLog)
 	buttonLogin.appendChild(buttonLoginText)
-	formLogin.appendChild(buttonLogin)
+	buttonDivLog.appendChild(buttonLogin)
 	
 	return
 }
-
-
 
 function checkInput() {
 		var username = document.getElementById("username").value
@@ -60,6 +62,7 @@ function checkInput() {
 			surprise.setAttribute("id", "surpriseImg")
 			main.appendChild(surprise)
 			document.getElementById("surpriseImg").src="cat.jpg"
+
 			return
 
 		} else if (username != user[i].username && password != user[i].password){
@@ -67,25 +70,30 @@ function checkInput() {
 			document.getElementById('main').innerHTML = '';
 			var main = document.getElementById("main")
 			var h1Reg = document.createElement("h1")
-			h1Reg.className = "my-5"
 			var h1RegText = document.createTextNode("Please Register")
 			var regForm = document.createElement("form")
 			var regUserInput = document.createElement("input")
-			regUserInput.setAttribute("id", "regUserInput")
+				regUserInput.setAttribute("id", "regUserInput")
+				regUserInput.setAttribute("placeholder", "username")
 			var regPassInput = document.createElement("input")
-			regPassInput.setAttribute("id", "regPassInput")
+				regPassInput.setAttribute("id", "regPassInput")
+				regPassInput.setAttribute("placeholder", "password")
+			var buttonDivReg = document.createElement("div")
 			var buttonReg = document.createElement("button")
 			var buttonRegText = document.createTextNode("Register")
-			buttonReg.className = "btn button-orange mb-2 ml-3"
-			buttonReg.setAttribute("type", "button")
-			buttonReg.setAttribute("onclick", "register()")
+				buttonReg.className = "btn button-orange"
+				buttonReg.setAttribute("type", "button")
+				buttonReg.setAttribute("onclick", "register()")
+
 			h1Reg.appendChild(h1RegText)
 			main.appendChild(h1Reg)
 			main.appendChild(regForm)
 			regForm.appendChild(regUserInput)
 			regForm.appendChild(regPassInput)
+			regForm.appendChild(buttonDivReg)
 			buttonReg.appendChild(buttonRegText)
-			regForm.appendChild(buttonReg)
+			buttonDivReg.appendChild(buttonReg)
+
 			return
 		}
 	}
@@ -112,12 +120,12 @@ function register() {
 		
 	}
 
-
-
 	user.push(newUser)
 	alert("You are now registered. Please log in.")
 	document.getElementById('main').innerHTML = '';
 	login()
+
+////When it runs through the login function again, it forgets that newUser has  been pushed and does not log in. 
 
 };
 
