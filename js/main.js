@@ -19,7 +19,7 @@ var user = [
 
 ]
 
-
+//This  creates the login elements & allows you to fire the checkInput() when the button is clicked to see if the person is a user or needs to register. 
 function login() {
 	var main = document.getElementById("main")
 	var h1Login = document.createElement("h1")
@@ -46,62 +46,63 @@ function login() {
 	formLogin.appendChild(buttonDivLog)
 	buttonLogin.appendChild(buttonLoginText)
 	buttonDivLog.appendChild(buttonLogin)
-	
-	return
-}
 
-function checkInput() {
-		var username = document.getElementById("username").value
-		var password = document.getElementById("password").value
-	for (var i = 0; i < user.length; i++) {
-		if (username == user[i].username && password == user[i].password) {
-			alert("Hi, " + username + "! You are now logged in.")
-			document.getElementById('main').innerHTML = '';
-			var main = document.getElementById("main")
-			var surprise = document.createElement("img")
-			surprise.setAttribute("id", "surpriseImg")
-			main.appendChild(surprise)
-			document.getElementById("surpriseImg").src="cat.jpg"
-
-			return
-
-		} else if (username != user[i].username && password != user[i].password){
-			alert("You shall not pass! Please create a User Name and Password")
-			document.getElementById('main').innerHTML = '';
-			var main = document.getElementById("main")
-			var h1Reg = document.createElement("h1")
-			var h1RegText = document.createTextNode("Please Register")
-			var regForm = document.createElement("form")
-			var regUserInput = document.createElement("input")
-				regUserInput.setAttribute("id", "regUserInput")
-				regUserInput.setAttribute("placeholder", "username")
-			var regPassInput = document.createElement("input")
-				regPassInput.setAttribute("id", "regPassInput")
-				regPassInput.setAttribute("placeholder", "password")
-			var buttonDivReg = document.createElement("div")
-			var buttonReg = document.createElement("button")
-			var buttonRegText = document.createTextNode("Register")
-				buttonReg.className = "btn button-orange"
-				buttonReg.setAttribute("type", "button")
-				buttonReg.setAttribute("onclick", "register()")
-
-			h1Reg.appendChild(h1RegText)
-			main.appendChild(h1Reg)
-			main.appendChild(regForm)
-			regForm.appendChild(regUserInput)
-			regForm.appendChild(regPassInput)
-			regForm.appendChild(buttonDivReg)
-			buttonReg.appendChild(buttonRegText)
-			buttonDivReg.appendChild(buttonReg)
-
-			return
-		}
-	}
 };
 
+//This checks the username & password & matches them against the objects by running them through a for loop. If they match an object, it will show the picture of a cat. If they don't, the for loop will end and it will run through the rest of the function, which replaces the login form with a register form. 
+function checkInput() {
+	var username = document.getElementById("username").value
+	var password = document.getElementById("password").value
 
+		for (var i = 0; i < user.length; i++) {	
+
+			if (username == user[i].username && password == user[i].password) {
+				alert("Hi, " + username + "! You are now logged in.")
+				document.getElementById('main').innerHTML = '';
+				var main = document.getElementById("main")
+				var surprise = document.createElement("img")
+				surprise.setAttribute("id", "surpriseImg")
+				main.appendChild(surprise)
+				document.getElementById("surpriseImg").src="cat.jpg"
+
+				return
+			}
+		}
+
+// else { -- This was giving it something else to do if it didn't match up the very first time it ran though the loop. 
+
+		 alert("You shall not pass! Please create a User Name and Password")
+			
+				document.getElementById('main').innerHTML = '';
+				var main = document.getElementById("main")
+				var h1Reg = document.createElement("h1")
+				var h1RegText = document.createTextNode("Please Register")
+				var regForm = document.createElement("form")
+				var regUserInput = document.createElement("input")
+					regUserInput.setAttribute("id", "regUserInput")
+					regUserInput.setAttribute("placeholder", "username")
+				var regPassInput = document.createElement("input")
+					regPassInput.setAttribute("id", "regPassInput")
+					regPassInput.setAttribute("placeholder", "password")
+				var buttonDivReg = document.createElement("div")
+				var buttonReg = document.createElement("button")
+				var buttonRegText = document.createTextNode("Register")
+					buttonReg.className = "btn button-orange"
+					buttonReg.setAttribute("type", "button")
+					buttonReg.setAttribute("onclick", "register()")
+
+				h1Reg.appendChild(h1RegText)
+				main.appendChild(h1Reg)
+				main.appendChild(regForm)
+				regForm.appendChild(regUserInput)
+				regForm.appendChild(regPassInput)
+				regForm.appendChild(buttonDivReg)
+				buttonReg.appendChild(buttonRegText)
+				buttonDivReg.appendChild(buttonReg)		
+}; //end checkInput()
+
+//This checks the registered username to make sure it isn't taken and makes sure the password is at least 8 characters long. If they are not, an alert pops up. If meet the criteria, they are pushed into the user array and the login() is called again. 
 function register() {
-
 	var usernameReg = document.getElementById("regUserInput").value
 	var passwordReg = document.getElementById("regPassInput").value
 	var newUser = {
@@ -124,8 +125,6 @@ function register() {
 	alert("You are now registered. Please log in.")
 	document.getElementById('main').innerHTML = '';
 	login()
-
-////When it runs through the login function again, it forgets that newUser has  been pushed and does not log in. 
 
 };
 

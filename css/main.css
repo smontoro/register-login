@@ -1,10 +1,10 @@
 #main {
-	padding-top: 50px;
+	padding-top: 25px;
 }
 
 
 h1 {
-	margin: 50px 0;
+	margin: 25px 0;
 }
 
 form {
@@ -24,5 +24,9 @@ input {
 	width: 36%;
 	margin-bottom: 6px;
 	margin-top: 20px;
+}
+
+img {
+	height: 600px;
 }
 
